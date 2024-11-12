@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PropertyFormRequest;
 use App\Models\Option;
-use App\Models\Proprety;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
-class PropretyController extends Controller
+class AdminPropretyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class PropretyController extends Controller
     public function index()
     {
         return view('admin.properties.index',[
-             "properties" =>Proprety::orderBy('created_at','desc')->paginate(3)
+             "properties" =>Property::orderBy('created_at','desc')->paginate(3)
         ]);
     }
 
@@ -25,7 +25,7 @@ class PropretyController extends Controller
      */
     public function create()
     {
-       $property =  new Proprety();
+       $property =  new Property();
        $property->fill([
             'surface'=>40,
             'rooms'=>3,
@@ -48,7 +48,7 @@ class PropretyController extends Controller
     public function store(PropertyFormRequest $request)
     {
         //
-        $property = Proprety::create($request->all());
+        $property = Property::create($request->all());
         $options= collect($request->validated('options'))->pluck('id')->toArray();
         $property->options()->sync($options);
         return to_route('admin.property.index')->with('success','Le bien a été bien ajouté');
@@ -65,10 +65,10 @@ class PropretyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proprety $property)
+    public function edit(Property $property)
     {
         //
-       
+
         return view('admin.properties.form',[
             'property'=> $property,
             'options'=>Option::pluck('name','id')
@@ -78,23 +78,23 @@ class PropretyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PropertyFormRequest $request, Proprety $property)
-    {  
-        
+    public function update(PropertyFormRequest $request, Property $property)
+    {
+
         $property->update($request->validated());
-        $options= collect($request->validated('options'))->pluck('id')->toArray();
+        $options = collect($request->validated('options'))->pluck('id')->toArray();
         $options = array_filter($options, fn($value) => !is_null($value) && $value !== '');
         $property->options()->sync($options);
-         return to_route('admin.property.index')->with('success','Le bien a été bien modifié');   
+         return to_route('admin.property.index')->with('success','Le bien a été bien modifié');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Proprety $property)
+    public function destroy(Property $property)
     {
         $property->delete();
-        return to_route('admin.property.index')->with('success','Le bien a été bien supprimé');   
+        return to_route('admin.property.index')->with('success','Le bien a été bien supprimé');
 
     }
 }
