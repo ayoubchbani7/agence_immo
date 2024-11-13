@@ -32,7 +32,7 @@
             'label' => 'Options', 
             'class' => 'col', 
             'name' => 'options[]',  // Formaté en tableau
-            'value' => $property->options()->pluck('id'), 
+            'value' => $property->options()->pluck('options.id'),
             'multiple' => true
         ])        
         @include('shared.checkbox',['label' =>'Vendu', 'class'=>'col ', 'name' =>'sold', 'value'=>$property->sold,'options'=>$options])

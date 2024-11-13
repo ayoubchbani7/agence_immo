@@ -50,7 +50,7 @@ class AdminPropretyController extends Controller
         //
         $property = Property::create($request->all());
         $options= collect($request->validated('options'))->pluck('id')->toArray();
-        $property->options()->sync($options);
+        $property->options()->sync(array_filter($options));
         return to_route('admin.property.index')->with('success','Le bien a été bien ajouté');
     }
 
