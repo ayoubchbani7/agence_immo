@@ -1,9 +1,15 @@
 <x-mail::message>
-# Order Shipped
+# Nouvelle demande
 
-Your order has been shipped!
+Une nouvelle demande de contact a été bien <a href="{{route('property.show',['slug'=> $property->getSlug(),'property' =>$property ])}}">{{$property->title}}</a>
+<br>
+    - Prénom  : {{$data['firstname']}}<br>
+    - Nom  : {{$data['lastname']}}<br>
+    - Téléphone  : {{$data['tele']}}<br>
+    - Email  : {{$data['email']}}<br>
+    <br>
 
+**Message : ** <br>
+{{$data['message']}}<br>
 
-Thanks,<br>
-{{ config('app.name') }}
 </x-mail::message>
