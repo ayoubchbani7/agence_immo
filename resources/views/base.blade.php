@@ -16,10 +16,10 @@
                 <a class="nav-link active" aria-current="page" href="/" style="color: aliceblue">AGENCES</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('admin.property.index')}}" style="color: aliceblue">BIENS</a>
+                <a class="nav-link " aria-current="page" href="{{route('admin.property.index')}}" style="color: aliceblue">BIENS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('admin.option.index')}}" style="color: aliceblue">OPTIONS</a>
+                <a class="nav-link " aria-current="page" href="{{route('admin.option.index')}}" style="color: aliceblue">OPTIONS</a>
               </li>
             </ul>
           </div>
