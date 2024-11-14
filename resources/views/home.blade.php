@@ -1,6 +1,9 @@
 @extends('base')
 
 @section('content')
+
+    <x-alert type="success"></x-alert>
+
     <div class="bg-light p-5 mb-5 text-center">
         <div class="container">
             <h1>Lorem ipsum dolor sit amet.</h1>
