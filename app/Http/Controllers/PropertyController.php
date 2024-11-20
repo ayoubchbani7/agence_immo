@@ -7,6 +7,7 @@ use App\Http\Requests\SearchPropertyRequest;
 use App\Mail\PropertyContactMail;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class PropertyController extends Controller
