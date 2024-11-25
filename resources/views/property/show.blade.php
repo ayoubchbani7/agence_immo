@@ -12,7 +12,7 @@
 <hr>
 <div class="mt-4">
     <h4>
-        Interessé par ce bien ?
+       {{__('property.contact_title')}}
     </h4>
     @include('shared.flash')
 
